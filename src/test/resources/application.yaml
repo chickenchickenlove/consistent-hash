@@ -1,0 +1,12 @@
+consistent-hash:
+  name: hello
+  numberOfVirtualNode: "10"
+
+#  5초에 한번씩 Expire 한다.
+spring:
+  data:
+    redis:
+      host: redis
+      port: 6379
+      timeout: 3000 #ms connection timeout
+      password: 1234

@@ -1,9 +1,12 @@
 package com.me.consistenthash.hash;
 
+import org.springframework.stereotype.Component;
+
 import java.nio.ByteBuffer;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+@Component
 public class MD5Hash implements CustomHash{
 
 
@@ -14,18 +17,16 @@ public class MD5Hash implements CustomHash{
         this.instance = MessageDigest.getInstance("MD5");
     }
 
-
     @Override
     public long hash(String key) {
         instance.reset();
         instance.update(key.getBytes());
-
-        byte[] hashBytes = instance.digest();
-
-        ByteBuffer buffer = ByteBuffer.allocate(Long.BYTES);
-        buffer.put(hashBytes, 0, Long.BYTES);
-        buffer.flip();
-
-        return buffer.getLong();
+        byte[] digest = instance.digest();
+        long h = 0;
+        for (int i = 0; i < 4; i++) {
+            h <<= 8;
+            h |= (digest[i]) & 0xFF;
+        }
+        return h;
     }
 }
