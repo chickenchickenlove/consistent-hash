@@ -10,7 +10,6 @@ import java.util.stream.IntStream;
 
 @Getter
 public class NormalHashNode extends Node{
-
     public NormalHashNode(String ip, CustomHash customHash) {
         super(ip, 1, customHash);
     }

@@ -9,9 +9,7 @@ import java.security.NoSuchAlgorithmException;
 @Component
 public class MD5Hash implements CustomHash{
 
-
     private final MessageDigest instance;
-
 
     public MD5Hash() throws NoSuchAlgorithmException {
         this.instance = MessageDigest.getInstance("MD5");

@@ -25,15 +25,14 @@ public class InitConfig {
 
     @Bean
     public Node node(CustomHash customHash) {
-        Map<String, String> getenv = System.getenv();
-        String nodeName = getenv.get("nodename");
-        log.info("nodeName = {}, NumberOfVirtualNode = {} ", nodeName, numberOfVirtualNode);
+        final Map<String, String> getenv = System.getenv();
+        final String nodeName = getenv.get("nodename");
         return new Node(nodeName, numberOfVirtualNode, customHash);
     }
 
     @Bean
     public RedisTemplate<String, Boolean> redisTemplate(RedisConnectionFactory connectionFactory) {
-        RedisTemplate<String, Boolean> template = new RedisTemplate<>();
+        final RedisTemplate<String, Boolean> template = new RedisTemplate<>();
         template.setConnectionFactory(connectionFactory);
         template.setKeySerializer(new StringRedisSerializer());
         template.setValueSerializer(new GenericToStringSerializer<>(Boolean.class));

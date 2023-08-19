@@ -16,7 +16,7 @@ public class ScheduleJob {
     private final RedisTemplate<String, Boolean> redisTemplate;
 
     public ScheduleJob(RedisTemplate<String, Boolean> redisTemplate) {
-        Map<String, String> getenv = System.getenv();
+        final Map<String, String> getenv = System.getenv();
         this.nodeName = getenv.get("nodename");
         this.redisTemplate = redisTemplate;
     }

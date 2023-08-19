@@ -13,11 +13,11 @@ public class CacheNode {
 
     private final Map<Long, String> cache = new HashMap<>();
     private final CustomHash customHash;
-
     private long cacheHit = 0;
     private long cacheMiss = 0;
 
     public String findInCache(String data) {
+        // key can be any other data. because method parameter `data` means `key`.
         long hash = this.customHash.hash(data);
         if (cache.containsKey(hash)) {
             cacheHit++;
