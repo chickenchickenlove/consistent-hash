@@ -1,4 +1,4 @@
-package com.me.consistenthash.hash;
+package com.me.consistenthash.node;
 
 import lombok.Getter;
 
